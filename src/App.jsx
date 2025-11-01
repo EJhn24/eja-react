@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import resume from './assets/ejaresume.pdf';
+import resume from './assets/Apan_Ehdsell_Resume.pdf';
 import profileImage from './assets/profile.jpg'
 import logo from './assets/EJA LOGO.png'
 
@@ -8,7 +8,6 @@ import { Worker, Viewer } from '@react-pdf-viewer/core';
 import { FaBars, FaTimes } from "react-icons/fa";
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import 'font-awesome/css/font-awesome.min.css';
-
 
 import featuredProjects from './data/featuredProjects';
 import skillsData from './data/skillsData';
@@ -87,7 +86,6 @@ function App() {
             <div className="logo-fade">
               <img src={profileImage} alt="Logo or Profile" />
               <h1 className="">Welcome to my Portfolio!</h1>
-              {/* <p>Hi, I'm Ehdsell</p> */}
             </div>
           </div>
         )}
@@ -132,17 +130,7 @@ function App() {
                     Skills
                   </button>
                 </li>
-                <li>
-                  <button
-                    className={activeSection === "contact" ? "active-nav" : ""}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-                    }}
-                  >
-                    Contact
-                  </button>
-                </li>
+               
               </ul>
               <button className="theme-toggle" onClick={toggleTheme}>
                 {theme === "light" ? "Dark" : "Light"} Mode
@@ -158,7 +146,7 @@ function App() {
                   <img src={profileImage} alt="Profile" className="animate-profile" />
                 </div>
                 <div className="App-content">
-                  <h1>Front-end Developer & UI/UX Designer</h1>
+                  <h1>Web Developer and Graphic Designer</h1>
                     <p>
                       I’m Ehdsell John Apan, a fresh graduate with a Bachelor of Science in Information Technology from
                       <a className="highlight" href="https://www.facebook.com/GordonCollegeOfficial/" target="_blank" rel="noopener noreferrer"> Gordon College</a>, with a strong focus on front-end development. 
@@ -192,22 +180,39 @@ function App() {
                     {featuredProjects.map((project, index) => (
                       <div key={index} className="project-card" onClick={() => openModal(project)}>
                         <img src={project.img}/>
-                        <h4>{project.role}</h4>
-                        <p>{project.description}</p>
+                        <h4>{project.title}</h4>
                       </div>
                     ))}
                   </div>
                 </section>
                 
                 {modalContent && (
-                  <div className="projects-modal-overlay" onClick={closeModal}>
-                    <div className="projects-modal" onClick={(e) => e.stopPropagation()}>
-                      <h2>{modalContent.title}</h2>
-                      <p>{modalContent.description}</p>
-                      <button className="btn" onClick={closeModal}>Close</button>
-                    </div>
-                  </div>
-                )}
+  <div className="projects-modal-overlay" onClick={closeModal}>
+    <div className="projects-modal" onClick={(e) => e.stopPropagation()}>
+      <h2 className="modal-title">{modalContent.title}</h2>
+
+      {/* Show video if available, otherwise show text only */}
+      {modalContent.preview ? (
+        <div className="video-wrapper">
+          <video
+            className="project-video-player"
+            src={modalContent.preview}
+            controls
+            autoPlay
+          />
+        </div>
+      ) : (
+        <p className="no-video-text">🎬 Video preview not available</p>
+      )}
+
+      <p className="modal-description">{modalContent.description}</p>
+      <button className="btn" onClick={closeModal}>Close</button>
+    </div>
+  </div>
+)}
+
+
+
 
                 <section className="skills-container" id="skills">
                   <h1 className="skills-title">Technical Skills</h1>
@@ -292,9 +297,6 @@ function App() {
                     </p>
                   </div>
                 </footer>
-
-
-                
             </main>
           </>
         )}
