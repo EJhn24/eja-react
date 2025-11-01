@@ -3,7 +3,7 @@ import skillsyncImg from "../assets/skillsync1.png";
 import crackstackImg from "../assets/crackstack1.jpg";
 import schoolsystemImg from "../assets/siaprofiling1.png";
 import pawtopiaImg from "../assets/pawtopia1.png";
-import shopitImg from "../assets/ShopIT.jpg";
+import shopitImg from "../assets/ShopIT.png";
 
 import skillsyncPreview from "../assets/SkillSync Preview.mp4";
 import crackstackPreview from "../assets/CrackStack Preview.mp4";
@@ -56,7 +56,7 @@ const featuredProjects = [
     title: "ShopIT",
     role: "Front-end Developer",
     description:
-      "ShopIT is an e-commerce platform designed for seamless online shopping, providing users with a modern interface to browse, purchase, and track products efficiently. It features secure payment integration and a responsive design for both web and mobile devices.",
+      "ShopIT is an e-commerce platform designed for seamless online shopping, providing users with a modern interface to browse, purchase, and track products efficiently.",
     img: shopitImg,
     preview: shopitPreview,
   },
